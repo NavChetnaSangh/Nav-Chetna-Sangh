@@ -5,13 +5,13 @@ import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
 
 const images = [
-  { src: "/images/celebrations/image1.jpeg", alt: "Celebration 1" },
-  { src: "/images/celebrations/image2.jpeg", alt: "Celebration 2" },
-  { src: "/images/celebrations/image3.jpeg", alt: "Celebration 3" },
-  { src: "/images/celebrations/image4.jpeg", alt: "Celebration 4" },
-  { src: "/images/celebrations/image5.jpeg", alt: "Celebration 5" },
-  { src: "/images/celebrations/image6.jpeg", alt: "Celebration 6" },
-  { src: "/images/celebrations/image7.jpeg", alt: "Celebration 7" },
+  { src: "/images/Celebrations/image1.jpeg", alt: "Celebration 1" },
+  { src: "/images/Celebrations/image2.jpeg", alt: "Celebration 2" },
+  { src: "/images/Celebrations/image3.jpeg", alt: "Celebration 3" },
+  { src: "/images/Celebrations/image4.jpeg", alt: "Celebration 4" },
+  { src: "/images/Celebrations/image5.jpeg", alt: "Celebration 5" },
+  { src: "/images/Celebrations/image6.jpeg", alt: "Celebration 6" },
+  { src: "/images/Celebrations/image7.jpeg", alt: "Celebration 7" },
 ];
 
 export default function Celebrations() {
