@@ -3,7 +3,6 @@ import Hero from "@/components/sections/Hero";
 import Stats from "@/components/sections/Stats";
 import About from "@/components/sections/About";
 import Programs from "@/components/sections/Programs";
-import Events from "@/components/sections/Events";
 import Celebrations from "@/components/sections/Celebrations";
 import Founder from "@/components/sections/Founder";
 import Team from "@/components/sections/Team";
@@ -18,7 +17,6 @@ export default function Home() {
       <Stats />
       <About />
       <Programs />
-      <Events />
       <Celebrations />
       <Founder />
       <Team />
