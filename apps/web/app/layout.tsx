@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Nav Chetna Sangh Charitable Trust",
     description:
-      "Empowering women, nourishing children, and uplifting communities since 2018.",
+      "Empowering women, nourishing children, and uplifting communities since 2025.",
     type: "website",
   },
 };

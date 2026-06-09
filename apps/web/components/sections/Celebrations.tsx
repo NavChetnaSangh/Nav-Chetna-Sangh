@@ -5,13 +5,14 @@ import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
 
 const images = [
-  { src: "/images/Celebrations/image1.jpeg", alt: "Celebration 1" },
-  { src: "/images/Celebrations/image2.jpeg", alt: "Celebration 2" },
   { src: "/images/Celebrations/image3.jpeg", alt: "Celebration 3" },
+  { src: "/images/Celebrations/image2.jpeg", alt: "Celebration 2" },
+  { src: "/images/Celebrations/image1.jpeg", alt: "Celebration 1" },
   { src: "/images/Celebrations/image4.jpeg", alt: "Celebration 4" },
   { src: "/images/Celebrations/image5.jpeg", alt: "Celebration 5" },
   { src: "/images/Celebrations/image6.jpeg", alt: "Celebration 6" },
   { src: "/images/Celebrations/image7.jpeg", alt: "Celebration 7" },
+  { src: "/images/Celebrations/events.jpeg", alt: "Events" },
 ];
 
 export default function Celebrations() {
@@ -60,14 +61,14 @@ export default function Celebrations() {
               key={i}
               onClick={() => setLightbox(i)}
               className={`relative overflow-hidden rounded-2xl cursor-pointer group shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 ${
-                i === 0 ? "col-span-2 row-span-2 md:h-[360px]" : "h-44 md:h-48"
+                i === 0 ? "col-span-2 row-span-2 h-56 md:h-[360px]" : "h-44 md:h-48"
               }`}
             >
               <Image
                 src={img.src}
                 alt={img.alt}
                 fill
-                className={`object-cover transition-transform duration-500 ${i === 0 || i === 4 ? "-rotate-90 scale-[1.8] group-hover:scale-[1.9]" : "group-hover:scale-105"}`}
+                className={`object-cover transition-transform duration-500 ${i === 0 || i === 4 || i === 7 ? "-rotate-90 scale-[1.8] group-hover:scale-[1.9]" : "group-hover:scale-105"}`}
                 sizes={i === 0 ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 50vw, 25vw"}
               />
               {/* Hover overlay */}
@@ -111,7 +112,7 @@ export default function Celebrations() {
               src={images[lightbox].src}
               alt={images[lightbox].alt}
               fill
-                className={`object-contain ${lightbox === 0 || lightbox === 4 ? "-rotate-90 scale-[1.8]" : ""}`}
+                className={`object-contain ${lightbox === 0 || lightbox === 4 || lightbox === 7 ? "-rotate-90 scale-[1.8]" : ""}`}
               sizes="90vw"
             />
           </div>

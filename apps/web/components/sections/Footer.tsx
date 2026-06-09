@@ -70,7 +70,7 @@ export default function Footer() {
 
             <p className="text-white/60 text-sm leading-relaxed mb-6">
               Empowering communities through women&apos;s welfare, child
-              nutrition, healthcare, and inclusive social development since 2018.
+              nutrition, healthcare, and inclusive social development since 2025.
             </p>
 
             {/* Socials */}

@@ -49,7 +49,7 @@ export default function Hero() {
             {/* Label */}
             <div className="inline-flex items-center gap-2 bg-saffron-100 border border-saffron-200 text-saffron-700 px-4 py-1.5 rounded-full text-sm font-semibold mb-5">
               <Sparkles size={13} className="text-saffron-500" />
-              Empowering Lives Since 2018
+              Empowering Lives Since 2025
             </div>
 
             {/* Headline */}
@@ -102,7 +102,7 @@ export default function Hero() {
               ))}
               <div className="flex items-center gap-2 bg-saffron-50 border border-saffron-200 px-3 py-1.5 rounded-full">
                 <span className="w-1.5 h-1.5 rounded-full bg-saffron-500 animate-pulse" />
-                <span className="text-saffron-700 font-bold text-xs font-display">Est. 2018</span>
+                <span className="text-saffron-700 font-bold text-xs font-display">Est. 2025</span>
               </div>
             </div>
           </div>
@@ -125,12 +125,12 @@ export default function Hero() {
                       />
                     </div>
 
-                    {/* Est. 2018 badge */}
+                    {/* Est. 2025 badge */}
                     <div className="absolute -bottom-4 -right-4 w-16 h-16 rounded-full border-2 border-saffron-400/60 flex items-center justify-center bg-white shadow-lg">
                       <div className="w-13 h-13 rounded-full flex items-center justify-center bg-gradient-to-br from-saffron-50 to-saffron-100 text-center leading-tight p-1">
                         <div>
                           <p className="text-saffron-600 font-display font-bold text-[9px]">Est.</p>
-                          <p className="text-saffron-700 font-display font-bold text-xs leading-none">2018</p>
+                          <p className="text-saffron-700 font-display font-bold text-xs leading-none">2025</p>
                         </div>
                       </div>
                     </div>

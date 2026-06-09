@@ -6,7 +6,7 @@ import { Quote, Sparkles } from "lucide-react";
 
 const timeline = [
   {
-    year: "2018",
+    year: "2025",
     event: "Trust Founded",
     desc: "Sweta Singh founded Nav Chetna Sangh Charitable Trust with a vision of dignified, inclusive community upliftment.",
   },

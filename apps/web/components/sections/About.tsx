@@ -53,7 +53,7 @@ export default function About() {
                 <div className="absolute inset-0 bg-gradient-to-t from-teal-900/40 to-transparent" />
                 {/* Floating badge */}
                 <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm rounded-xl px-4 py-2 shadow-lg">
-                  <p className="text-teal-700 font-bold text-sm">Since 2018</p>
+                  <p className="text-teal-700 font-bold text-sm">Since 2025</p>
                   <p className="text-gray-500 text-xs">Serving Communities</p>
                 </div>
               </div>

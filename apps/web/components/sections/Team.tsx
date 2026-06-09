@@ -2,14 +2,19 @@
 
 import React from "react";
 import Image from "next/image";
-import { Linkedin, Mail } from "lucide-react";
 
 const members = [
   {
     name: "Sweta Singh",
     role: "Founder & President",
     image: "/images/founder-sweta-singh.jpeg",
-    highlight: true,
+  },
+  {
+    name: "Anita Pal",
+    role: "Vice President",
+    image: "/images/VP.jpeg",
+    imgClass: "object-contain object-center",
+    bgClass: "bg-gray-100",
   },
   {
     name: "Ditiya Ghosh",
@@ -43,109 +48,104 @@ const members = [
   },
 ];
 
+type Member = { name: string; role: string; image: string; imgClass?: string; bgClass?: string };
+
+const badgeColor = (role: string) => {
+  if (role === "Founder & President") return "bg-saffron-100 text-saffron-700";
+  if (role === "Vice President")      return "bg-saffron-100 text-saffron-700";
+  if (role === "Secretary")           return "bg-gold-100 text-gold-700";
+  if (role === "Treasurer")           return "bg-teal-100 text-teal-700";
+  return "bg-gray-100 text-gray-500";
+};
+
+function MemberCard({ member, photoSize = "w-20 h-20" }: { member: Member; photoSize?: string }) {
+  return (
+    <div className="group bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 overflow-hidden text-center p-3">
+      <div className={`relative ${photoSize} mx-auto mb-2 rounded-lg overflow-hidden border-2 border-gray-100 group-hover:border-teal-200 transition-colors`}>
+        <div className={`absolute inset-0 flex items-center justify-center ${member.bgClass ?? "bg-gradient-to-br from-teal-100 to-teal-200"}`}>
+          <span className="text-teal-600 font-bold text-lg font-display">
+            {member.name.split(" ").map((n) => n[0]).join("")}
+          </span>
+        </div>
+        <Image
+          src={member.image}
+          alt={member.name}
+          fill
+          className={`relative z-10 ${member.imgClass ?? "object-cover object-top"}`}
+          sizes="96px"
+        />
+      </div>
+      <span className={`inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full mb-1 ${badgeColor(member.role)}`}>
+        {member.role}
+      </span>
+      <h4 className="font-display font-bold text-gray-900 text-xs leading-tight">{member.name}</h4>
+    </div>
+  );
+}
+
 export default function Team() {
   return (
-    <section id="team" className="py-20 md:py-28 bg-warm-50 relative overflow-hidden">
+    <section id="team" className="min-h-screen flex flex-col justify-center py-8 bg-warm-50 relative overflow-hidden">
       {/* Decorative blobs */}
-      <div className="absolute top-0 right-0 w-80 h-80 bg-saffron-100/40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-100/30 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4" />
+      <div className="absolute top-0 right-0 w-64 h-64 bg-saffron-100/40 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3" />
+      <div className="absolute bottom-0 left-0 w-48 h-48 bg-teal-100/30 rounded-full blur-3xl translate-y-1/3 -translate-x-1/4" />
 
       <div className="container-custom relative z-10">
         {/* Header */}
-        <div className="text-center mb-14">
-          <span className="inline-block bg-teal-100 text-teal-700 text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4">
+        <div className="text-center mb-6">
+          <span className="inline-block bg-teal-100 text-teal-700 text-xs font-bold uppercase tracking-widest px-4 py-1 rounded-full mb-2">
             Our Team
           </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-warm-950 mb-4">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-warm-950 mb-1">
             The People Behind{" "}
             <span className="text-teal-600">Nav Chetna</span>
           </h2>
-          <p className="text-gray-500 text-lg max-w-xl mx-auto">
-            A dedicated team united by one mission — to serve, uplift, and
-            create lasting change in our community.
+          <p className="text-gray-500 text-sm max-w-md mx-auto">
+            A dedicated team united by one mission — to serve, uplift, and create lasting change.
           </p>
         </div>
 
-        {/* Founder — full-width featured card */}
-        <div className="flex justify-center mb-10">
-          <div className="group relative bg-white rounded-3xl shadow-xl border border-saffron-100 overflow-hidden flex flex-col sm:flex-row items-center gap-6 p-6 sm:p-8 max-w-2xl w-full hover:shadow-2xl transition-all duration-300">
-            {/* Glow */}
+        {/* Founder — compact horizontal card */}
+        <div className="flex justify-center mb-5">
+          <div className="group relative bg-white rounded-2xl shadow-lg border border-saffron-100 overflow-hidden flex items-center gap-5 p-4 max-w-lg w-full hover:shadow-xl transition-all duration-300">
             <div className="absolute inset-0 bg-gradient-to-br from-saffron-50 to-white opacity-60" />
-
-            {/* Photo */}
-            <div className="relative w-32 h-32 sm:w-40 sm:h-40 flex-shrink-0 z-10">
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-saffron-300 to-saffron-500 blur-md opacity-40 scale-110" />
-              <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-saffron-200 shadow-lg">
+            <div className="relative w-20 h-20 flex-shrink-0 z-10">
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-saffron-300 to-saffron-500 blur-md opacity-40 scale-110" />
+              <div className="relative w-full h-full rounded-xl overflow-hidden border-2 border-saffron-200 shadow-md">
                 <Image
                   src={members[0].image}
                   alt={members[0].name}
                   fill
                   className="object-cover object-top"
-                  sizes="160px"
+                  sizes="80px"
                 />
               </div>
             </div>
-
-            {/* Info */}
-            <div className="z-10 text-center sm:text-left">
-              <span className="inline-block bg-saffron-100 text-saffron-700 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-2">
+            <div className="z-10">
+              <span className="inline-block bg-saffron-100 text-saffron-700 text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full mb-1">
                 Founder & President
               </span>
-              <h3 className="font-display text-2xl font-bold text-gray-900 mb-1">
+              <h3 className="font-display text-lg font-bold text-gray-900 leading-tight">
                 {members[0].name}
               </h3>
-              <p className="text-gray-500 text-sm max-w-sm">
-                Founded Nav Chetna Sangh Charitable Trust with a vision to
-                empower women, nourish children, and build an inclusive society.
+              <p className="text-gray-400 text-xs mt-0.5">
+                Empowering women, nourishing children & building an inclusive society.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Rest of the team — 2-col then 4-col grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
-          {members.slice(1).map((member, i) => (
-            <div
-              key={i}
-              className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 overflow-hidden text-center p-6"
-            >
-              {/* Photo */}
-              <div className="relative w-36 h-36 mx-auto mb-4 rounded-xl overflow-hidden border-2 border-gray-100 group-hover:border-teal-200 transition-colors">
-                {/* Fallback initials — behind the image */}
-                <div className="absolute inset-0 bg-gradient-to-br from-teal-100 to-teal-200 flex items-center justify-center">
-                  <span className="text-teal-600 font-bold text-3xl font-display">
-                    {member.name
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </span>
-                </div>
-                <Image
-                  src={member.image}
-                  alt={member.name}
-                  fill
-                  className="object-cover object-top relative z-10"
-                  sizes="144px"
-                />
-              </div>
+        {/* Row 1 — VP, Secretary, Treasurer */}
+        <div className="grid grid-cols-3 gap-4 mb-4">
+          {members.slice(1, 4).map((member, i) => (
+            <MemberCard key={i} member={member} photoSize="w-24 h-24" />
+          ))}
+        </div>
 
-              {/* Role badge */}
-              <span
-                className={`inline-block text-xs font-semibold px-3 py-1 rounded-full mb-2 ${
-                  member.role === "Secretary"
-                    ? "bg-gold-100 text-gold-700"
-                    : member.role === "Treasurer"
-                    ? "bg-teal-100 text-teal-700"
-                    : "bg-gray-100 text-gray-500"
-                }`}
-              >
-                {member.role}
-              </span>
-
-              <h4 className="font-display font-bold text-gray-900 text-base leading-tight">
-                {member.name}
-              </h4>
-            </div>
+        {/* Row 2 — Executive Members */}
+        <div className="grid grid-cols-4 gap-4">
+          {members.slice(4).map((member, i) => (
+            <MemberCard key={i} member={member} photoSize="w-20 h-20" />
           ))}
         </div>
       </div>
