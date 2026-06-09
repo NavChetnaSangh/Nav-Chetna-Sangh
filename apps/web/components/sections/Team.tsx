@@ -58,10 +58,10 @@ const badgeColor = (role: string) => {
   return "bg-gray-100 text-gray-500";
 };
 
-function MemberCard({ member, photoSize = "w-20 h-20" }: { member: Member; photoSize?: string }) {
+function MemberCard({ member, photoSize = "w-20 h-20", compact = false }: { member: Member; photoSize?: string; compact?: boolean }) {
   return (
-    <div className="group bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 overflow-hidden text-center p-3">
-      <div className={`relative ${photoSize} mx-auto mb-2 rounded-lg overflow-hidden border-2 border-gray-100 group-hover:border-teal-200 transition-colors`}>
+    <div className={`group bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 overflow-hidden text-center ${compact ? "p-2 sm:p-3" : "p-3"}`}>
+      <div className={`relative ${photoSize} mx-auto ${compact ? "mb-1.5" : "mb-2"} rounded-lg overflow-hidden border-2 border-gray-100 group-hover:border-teal-200 transition-colors`}>
         <div className={`absolute inset-0 flex items-center justify-center ${member.bgClass ?? "bg-gradient-to-br from-teal-100 to-teal-200"}`}>
           <span className="text-teal-600 font-bold text-lg font-display">
             {member.name.split(" ").map((n) => n[0]).join("")}
@@ -75,10 +75,10 @@ function MemberCard({ member, photoSize = "w-20 h-20" }: { member: Member; photo
           sizes="96px"
         />
       </div>
-      <span className={`inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full mb-1 ${badgeColor(member.role)}`}>
+      <span className={`${compact ? "hidden sm:inline-block" : "inline-block"} text-[10px] font-semibold px-2 py-0.5 rounded-full mb-1 ${badgeColor(member.role)}`}>
         {member.role}
       </span>
-      <h4 className="font-display font-bold text-gray-900 text-xs leading-tight">{member.name}</h4>
+      <h4 className={`font-display font-bold text-gray-900 leading-tight ${compact ? "text-[10px] sm:text-xs" : "text-xs"}`}>{member.name}</h4>
     </div>
   );
 }
@@ -143,9 +143,9 @@ export default function Team() {
         </div>
 
         {/* Row 2 — Executive Members */}
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-4 gap-1.5 sm:gap-4">
           {members.slice(4).map((member, i) => (
-            <MemberCard key={i} member={member} photoSize="w-20 h-20" />
+            <MemberCard key={i} member={member} photoSize="w-16 h-16 sm:w-20 sm:h-20" compact />
           ))}
         </div>
       </div>
