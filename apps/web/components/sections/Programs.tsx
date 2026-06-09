@@ -71,7 +71,7 @@ const programs = [
     tagline: "Relief · Essentials · Companionship",
     color: "saffron",
     image:
-      "https://images.unsplash.com/photo-1581579439929-82cf5f75e5ad?w=600&q=80",
+      "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80",
     shortDesc:
       "Regular distribution of essential items to old age homes and orphanages, ensuring nobody is forgotten.",
     points: [
