@@ -1,56 +1,55 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { Users, Heart, Calendar, Home, Star, Smile } from "lucide-react";
 
 const stats = [
   {
-    icon: Users,
     value: 5000,
     suffix: "+",
     label: "Lives Touched",
     description: "Beneficiaries across our programs",
     color: "saffron",
+    rotate: "rotate-12",
   },
   {
-    icon: Heart,
     value: 200,
     suffix: "+",
     label: "Events Organized",
     description: "From health camps to Diwali celebrations",
     color: "teal",
+    rotate: "-rotate-6",
   },
   {
-    icon: Home,
     value: 50,
     suffix: "+",
     label: "Orphanages Supported",
     description: "Regular supply of essentials",
     color: "gold",
+    rotate: "rotate-6",
   },
   {
-    icon: Calendar,
     value: 6,
     suffix: "+",
     label: "Years of Service",
     description: "Consistent community-driven work",
     color: "saffron",
+    rotate: "-rotate-12",
   },
   {
-    icon: Star,
     value: 300,
     suffix: "+",
     label: "Women Honored",
     description: "On Mother's Day & special occasions",
     color: "teal",
+    rotate: "rotate-3",
   },
   {
-    icon: Smile,
     value: 1000,
     suffix: "+",
     label: "Children Nourished",
     description: "Fighting malnutrition every day",
     color: "gold",
+    rotate: "-rotate-3",
   },
 ];
 
@@ -108,21 +107,18 @@ export default function Stats() {
   const colorMap = {
     saffron: {
       bg: "bg-saffron-50",
-      icon: "bg-saffron-100 text-saffron-600",
       value: "text-saffron-700",
       border: "border-saffron-200",
       glow: "hover:shadow-saffron-100",
     },
     teal: {
       bg: "bg-teal-50",
-      icon: "bg-teal-100 text-teal-600",
       value: "text-teal-700",
       border: "border-teal-200",
       glow: "hover:shadow-teal-100",
     },
     gold: {
       bg: "bg-gold-50",
-      icon: "bg-gold-100 text-gold-600",
       value: "text-gold-700",
       border: "border-gold-200",
       glow: "hover:shadow-gold-100",
@@ -159,24 +155,24 @@ export default function Stats() {
 
         {/* Stats grid */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          {stats.map(({ icon: Icon, value, suffix, label, description, color }, i) => {
+          {stats.map(({ value, suffix, label, description, color, rotate }, i) => {
             const c = colorMap[color as keyof typeof colorMap];
             return (
               <div
                 key={label}
-                className={`relative rounded-2xl border ${c.border} ${c.bg} p-6 md:p-8 hover:shadow-xl ${c.glow} transition-all duration-300 hover:-translate-y-1 group`}
+                className={`relative rounded-2xl border ${c.border} ${c.bg} p-6 md:p-8 hover:shadow-xl ${c.glow} transition-all duration-300 hover:-translate-y-1 group overflow-hidden`}
                 style={{ animationDelay: `${i * 0.1}s` }}
               >
-                {/* Icon */}
-                <div
-                  className={`w-12 h-12 rounded-xl ${c.icon} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}
+                {/* Rotated ghost number */}
+                <span
+                  className={`absolute -right-4 -bottom-4 font-display font-black text-7xl md:text-8xl select-none pointer-events-none ${c.value} opacity-[0.07] ${rotate} transition-transform duration-500 group-hover:scale-110`}
                 >
-                  <Icon size={22} />
-                </div>
+                  {value.toLocaleString()}{suffix}
+                </span>
 
                 {/* Value */}
                 <p
-                  className={`font-display text-3xl md:text-4xl font-bold ${c.value} mb-1`}
+                  className={`font-display text-3xl md:text-4xl font-bold ${c.value} mb-1 relative z-10`}
                 >
                   <AnimatedNumber
                     target={value}
@@ -186,10 +182,10 @@ export default function Stats() {
                 </p>
 
                 {/* Label */}
-                <p className="font-semibold text-gray-800 mb-1 text-sm md:text-base">
+                <p className="font-semibold text-gray-800 mb-1 text-sm md:text-base relative z-10">
                   {label}
                 </p>
-                <p className="text-gray-400 text-xs md:text-sm">{description}</p>
+                <p className="text-gray-400 text-xs md:text-sm relative z-10">{description}</p>
               </div>
             );
           })}
