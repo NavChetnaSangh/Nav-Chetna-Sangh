@@ -7,12 +7,12 @@ import { X, ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
 const images = [
   { src: "/images/Celebrations/image3.jpeg", alt: "Celebration 3" },
   { src: "/images/Celebrations/image2.jpeg", alt: "Celebration 2" },
-  { src: "/images/Celebrations/image1.jpeg", alt: "Celebration 1" },
+  { src: "/images/Celebrations/image1.jpeg", alt: "Celebration 1", rotate: true },
   { src: "/images/Celebrations/image4.jpeg", alt: "Celebration 4" },
-  { src: "/images/Celebrations/image5.jpeg", alt: "Celebration 5" },
+  { src: "/images/Celebrations/image5.jpeg", alt: "Celebration 5", rotate: true },
   { src: "/images/Celebrations/image6.jpeg", alt: "Celebration 6" },
   { src: "/images/Celebrations/image7.jpeg", alt: "Celebration 7" },
-  { src: "/images/Celebrations/events.jpeg", alt: "Events" },
+  { src: "/images/Celebrations/events.jpeg", alt: "Events", rotate: true },
 ];
 
 export default function Celebrations() {
@@ -68,7 +68,7 @@ export default function Celebrations() {
                 src={img.src}
                 alt={img.alt}
                 fill
-                className={`object-cover transition-transform duration-500 ${i === 0 || i === 4 || i === 7 ? "-rotate-90 scale-[1.8] group-hover:scale-[1.9]" : "group-hover:scale-105"}`}
+                className={`object-cover transition-transform duration-500 ${img.rotate ? "-rotate-90 scale-[1.8] group-hover:scale-[1.9]" : "group-hover:scale-105"}`}
                 sizes={i === 0 ? "(max-width: 768px) 100vw, 50vw" : "(max-width: 768px) 50vw, 25vw"}
               />
               {/* Hover overlay */}
@@ -112,7 +112,7 @@ export default function Celebrations() {
               src={images[lightbox].src}
               alt={images[lightbox].alt}
               fill
-                className={`object-contain ${lightbox === 0 || lightbox === 4 || lightbox === 7 ? "-rotate-90 scale-[1.8]" : ""}`}
+                className={`object-contain ${images[lightbox].rotate ? "-rotate-90 scale-[1.8]" : ""}`}
               sizes="90vw"
             />
           </div>
