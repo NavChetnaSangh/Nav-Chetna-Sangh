@@ -21,11 +21,79 @@ const reasons = [
   "Tax exemption under Section 80G (India)",
 ];
 
+
+function loadRazorPay(): Promise<boolean> {
+  return new Promise((resolve) =>{
+    if ((window as any).Razorpay) {
+      resolve(true);
+      return;
+    }
+    const script = document.createElement("script");
+    script.src= "https://checkout.razorpay.com/v1/checkout.js";
+    script.onload = ()=> (resolve(true));
+    script.onerror = ()=> (resolve(false));
+    document.body.appendChild(script)
+  })
+}
+
 export default function Donate() {
   const [selected, setSelected] = useState<number>(500);
   const [custom, setCustom] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
   const activeAmount = custom ? parseInt(custom) || 0 : selected;
   const impact = impactMap[selected as keyof typeof impactMap];
+
+
+  const handleDonate = async() => {
+    if(activeAmount < 1) return;
+    setStatus("loading");
+    setErrorMsg("");
+
+    const loaded = await loadRazorPay();
+
+    if(!loaded) {
+      setStatus("error");
+      setErrorMsg("Failed to load payment gateway. Check your internet connection.");
+      return;
+    }
+
+    const response = await fetch("/api/create-order", {
+      method: "POST",
+      headers: { "Content-Type" : "application/json"},
+      body: JSON.stringify({amount: activeAmount})
+    })
+
+    const data = await response.json();
+
+    if(!response.ok) {
+      setStatus("error");
+      setErrorMsg(data.error || "Something went wrong");
+      return;
+    }
+
+    const options = {
+      key: data.keyId,
+      amount: data.amount,
+      currency: data.currency,
+      order_id: data.orderId,
+      name: "Nav Chetna Sangh Trust",
+      description: "Donation",
+      handler: function() {
+        setStatus("success");
+      },
+      modal: {
+        ondismiss: function() {
+          setStatus("idle");
+        }
+      }
+    }
+
+    const rzp = new (window as any).Razorpay(options);
+    rzp.open();
+
+
+  }
 
   return (
     <section id="donate" className="py-20 md:py-28 relative overflow-hidden">
@@ -152,19 +220,25 @@ export default function Donate() {
               variant="donate"
               size="lg"
               className="w-full text-base mb-4"
-              onClick={() => {
-                alert(
-                  `Thank you for your generous donation of ₹${activeAmount.toLocaleString()}! Payment gateway integration coming soon.`
-                );
-              }}
+              onClick={handleDonate}
+              disabled={status === "loading" || activeAmount < 1}
             >
               <Heart size={18} className="fill-white" />
-              Donate ₹
-              {activeAmount > 0
-                ? activeAmount.toLocaleString()
-                : "—"}{" "}
-              Now
+              {status === "loading" ? "Processing..." : `Donate ₹${activeAmount > 0 ? activeAmount.toLocaleString() : "—"} Now`}
+              
+
             </Button>
+            {status === "success" && (
+                <div className="bg-green-50 border border-green-200 rounded-xl p-3 text-center text-green-700 text-sm font-medium">
+                  Thank you! Your donation was successful. 🙏
+                </div>
+              )}
+
+              {status === "error" && (
+                <div className="bg-red-50 border border-red-200 rounded-xl p-3 text-center text-red-600 text-sm">
+                  {errorMsg}
+                </div>
+              )}
 
             <p className="text-center text-xs text-gray-400">
               Secured donation · 80G Tax exemption · No account needed
