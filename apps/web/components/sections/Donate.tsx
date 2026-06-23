@@ -243,26 +243,6 @@ export default function Donate() {
             <p className="text-center text-xs text-gray-400">
               Secured donation · 80G Tax exemption · No account needed
             </p>
-
-            {/* Divider */}
-            <div className="border-t border-gray-100 my-5" />
-
-            {/* Bank transfer info */}
-            <div className="bg-gray-50 rounded-xl p-4">
-              <p className="text-xs font-bold text-gray-600 mb-2 uppercase tracking-wide">
-                Direct Bank Transfer
-              </p>
-              <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-gray-500">
-                <span className="font-medium text-gray-700">Account Name</span>
-                <span>Nav Chetna Sangh Trust</span>
-                <span className="font-medium text-gray-700">Account No.</span>
-                <span>XXXX XXXX XXXX</span>
-                <span className="font-medium text-gray-700">IFSC Code</span>
-                <span>XXXXXXXXXX</span>
-                <span className="font-medium text-gray-700">Bank</span>
-                <span>State Bank of India</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>

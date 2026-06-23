@@ -4,14 +4,6 @@ import React from "react";
 import Image from "next/image";
 import { Heart, Phone, Mail, MapPin, Facebook, Instagram, Twitter, Youtube, ArrowUp } from "lucide-react";
 
-const quickLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About Us", href: "#about" },
-  { label: "Our Programs", href: "#programs" },
-  { label: "Founder Story", href: "#founder" },
-  { label: "Donate", href: "#donate" },
-];
-
 const programs = [
   "Women Empowerment",
   "Child Nutrition & Education",
@@ -88,26 +80,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="font-display font-bold text-white text-base mb-4 pb-2 border-b border-white/10">
-              Quick Links
-            </h4>
-            <ul className="space-y-2">
-              {quickLinks.map(({ label, href }) => (
-                <li key={label}>
-                  <button
-                    onClick={() => scrollTo(href)}
-                    className="text-white/60 hover:text-saffron-400 text-sm transition-colors flex items-center gap-1.5 group"
-                  >
-                    <span className="w-1 h-1 rounded-full bg-saffron-500 opacity-0 group-hover:opacity-100 transition-opacity" />
-                    {label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
           {/* Programs */}
           <div>
             <h4 className="font-display font-bold text-white text-base mb-4 pb-2 border-b border-white/10">
@@ -153,9 +125,12 @@ export default function Footer() {
               </li>
             </ul>
 
-            {/* CTA */}
-            <div className="mt-6 bg-saffron-600/20 border border-saffron-500/30 rounded-xl p-4">
-              <p className="text-white/80 text-xs mb-3 font-medium">
+          </div>
+
+          {/* CTA col */}
+          <div>
+            <div className="bg-saffron-600/20 border border-saffron-500/30 rounded-xl p-4">
+              <p className="text-white/80 text-sm mb-3 font-medium">
                 Want to volunteer or partner with us?
               </p>
               <a

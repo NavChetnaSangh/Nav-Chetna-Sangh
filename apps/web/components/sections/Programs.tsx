@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Image from "next/image";
 import {
   HeartPulse,
   GraduationCap,
@@ -121,7 +120,9 @@ const colorMap = {
   saffron: {
     badge: "bg-saffron-100 text-saffron-700",
     icon: "bg-saffron-500",
-    bar: "bg-saffron-400",
+    topBg: "bg-gradient-to-br from-saffron-50 to-saffron-100",
+    circle1: "bg-saffron-300",
+    circle2: "bg-saffron-400",
     border: "border-saffron-200",
     hover: "hover:border-saffron-400",
     dot: "bg-saffron-400",
@@ -130,7 +131,9 @@ const colorMap = {
   teal: {
     badge: "bg-teal-100 text-teal-700",
     icon: "bg-teal-500",
-    bar: "bg-teal-400",
+    topBg: "bg-gradient-to-br from-teal-50 to-teal-100",
+    circle1: "bg-teal-300",
+    circle2: "bg-teal-400",
     border: "border-teal-200",
     hover: "hover:border-teal-400",
     dot: "bg-teal-400",
@@ -139,7 +142,9 @@ const colorMap = {
   gold: {
     badge: "bg-gold-100 text-gold-700",
     icon: "bg-gold-500",
-    bar: "bg-gold-400",
+    topBg: "bg-gradient-to-br from-gold-50 to-gold-100",
+    circle1: "bg-gold-300",
+    circle2: "bg-gold-400",
     border: "border-gold-200",
     hover: "hover:border-gold-400",
     dot: "bg-gold-400",
@@ -191,32 +196,16 @@ export default function Programs() {
                 className={`group rounded-2xl border-2 ${c.border} ${c.hover} bg-white overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1`}
                 onClick={() => setActive(isActive ? null : prog.id)}
               >
-                {/* Image */}
-                <div className="relative h-44 overflow-hidden">
-                  <Image
-                    src={prog.image}
-                    alt={prog.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-
-                  {/* Icon chip */}
-                  <div
-                    className={`absolute top-3 right-3 w-10 h-10 rounded-xl ${c.icon} flex items-center justify-center shadow-lg`}
-                  >
-                    <Icon size={20} className="text-white" />
+                {/* Decorative top */}
+                <div className={`relative h-32 ${c.topBg} flex flex-col items-center justify-center overflow-hidden`}>
+                  <div className={`absolute -top-6 -right-6 w-28 h-28 rounded-full ${c.circle1} opacity-20`} />
+                  <div className={`absolute -bottom-8 -left-8 w-36 h-36 rounded-full ${c.circle2} opacity-15`} />
+                  <div className={`relative w-14 h-14 rounded-2xl ${c.icon} flex items-center justify-center shadow-lg mb-2.5`}>
+                    <Icon size={26} className="text-white" />
                   </div>
-
-                  {/* Tagline */}
-                  <div className="absolute bottom-3 left-3">
-                    <span
-                      className={`text-xs font-semibold px-2 py-0.5 rounded-full ${c.badge}`}
-                    >
-                      {prog.tagline}
-                    </span>
-                  </div>
+                  <span className={`text-xs font-semibold px-3 py-0.5 rounded-full ${c.badge}`}>
+                    {prog.tagline}
+                  </span>
                 </div>
 
                 {/* Content */}
