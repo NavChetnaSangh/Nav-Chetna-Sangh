@@ -4,34 +4,6 @@ import React, { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Quote, Sparkles } from "lucide-react";
 
-const timeline = [
-  {
-    year: "2025",
-    event: "Trust Founded",
-    desc: "Sweta Singh founded Nav Chetna Sangh Charitable Trust with a vision of dignified, inclusive community upliftment.",
-  },
-  {
-    year: "2019",
-    event: "First Health Camp",
-    desc: "Organized the first women's health awareness camp, reaching 200+ women with vital health knowledge.",
-  },
-  {
-    year: "2020",
-    event: "Child Nutrition Drive",
-    desc: "Launched an initiative to identify and support malnourished children in the community.",
-  },
-  {
-    year: "2022",
-    event: "Transgender Inclusion",
-    desc: "Expanded the Trust's mission to actively support and include transgender individuals in social programs.",
-  },
-  {
-    year: "2024",
-    event: "5000+ Lives Touched",
-    desc: "Reached a milestone of positively impacting over 5,000 individuals through various programs.",
-  },
-];
-
 export default function Founder() {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
@@ -167,56 +139,6 @@ export default function Founder() {
           </div>
         </div>
 
-        {/* Timeline */}
-        <div
-          className={`transition-all duration-700 delay-300 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-        >
-          <h3 className="font-display text-2xl font-bold text-center text-warm-950 mb-10">
-            Our Journey
-          </h3>
-
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-saffron-200 -translate-x-1/2" />
-
-            <div className="space-y-8">
-              {timeline.map((item, i) => (
-                <div
-                  key={item.year}
-                  className={`flex flex-col md:flex-row items-center gap-4 md:gap-8 ${i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"}`}
-                >
-                  {/* Text side */}
-                  <div
-                    className={`md:w-[calc(50%-2rem)] ${i % 2 === 0 ? "md:text-right" : "md:text-left"}`}
-                  >
-                    <div
-                      className={`inline-block bg-white border border-saffron-100 rounded-xl shadow-sm p-4 hover:shadow-md transition-shadow`}
-                    >
-                      <p className="font-display font-bold text-lg text-saffron-700 mb-0.5">
-                        {item.event}
-                      </p>
-                      <p className="text-gray-500 text-sm leading-relaxed">
-                        {item.desc}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Year bubble */}
-                  <div className="relative z-10 flex-shrink-0">
-                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-saffron-400 to-saffron-600 flex items-center justify-center shadow-lg shadow-saffron-200">
-                      <span className="text-white text-xs font-bold text-center leading-tight">
-                        {item.year}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Empty side */}
-                  <div className="hidden md:block md:w-[calc(50%-2rem)]" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
