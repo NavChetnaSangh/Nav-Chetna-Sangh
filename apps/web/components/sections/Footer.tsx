@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { Heart, Phone, Mail, MapPin, Facebook, Instagram, Twitter, Youtube, ArrowUp } from "lucide-react";
+import { Heart, Phone, Mail, MapPin, Facebook, Instagram, Youtube, ArrowUp } from "lucide-react";
 
 const programs = [
   "Women Empowerment",
@@ -14,10 +14,9 @@ const programs = [
 ];
 
 const socials = [
-  { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Youtube, href: "#", label: "YouTube" },
+  { icon: Facebook, href: "https://www.facebook.com/share/1JcsX1hCJE/", label: "Facebook" },
+  { icon: Instagram, href: "https://www.instagram.com/nav_chetna_sangh_trust?igsh=em9ycWliazg3enh1", label: "Instagram" },
+  { icon: Youtube, href: "https://youtube.com/@navchetnasanghcharitabletrust?si=okfc_YzyUQ3THN9R", label: "YouTube" },
 ];
 
 export default function Footer() {
