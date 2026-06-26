@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import {
   HeartPulse,
   GraduationCap,
@@ -18,8 +19,7 @@ const programs = [
     title: "Women Empowerment",
     tagline: "Health · Education · Independence",
     color: "saffron",
-    image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80",
+    image: "/images/welfare2.jpeg",
     shortDesc:
       "Helping women become self-reliant through skill-building, health awareness, and economic opportunities.",
     points: [
@@ -35,8 +35,7 @@ const programs = [
     title: "Child Development",
     tagline: "Nutrition · Education · Protection",
     color: "teal",
-    image:
-      "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600&q=80",
+    image: "/images/children2.jpeg",
     shortDesc:
       "Identifying and supporting malnourished, homeless children — giving them nutrition, learning, and hope.",
     points: [
@@ -52,8 +51,7 @@ const programs = [
     title: "Transgender Support",
     tagline: "Dignity · Inclusion · Respect",
     color: "gold",
-    image:
-      "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80",
+    image: "/images/welfare6.jpeg",
     shortDesc:
       "Bringing recognition, respect, and opportunity to a community that is too often overlooked by society.",
     points: [
@@ -69,8 +67,7 @@ const programs = [
     title: "Elderly & Orphan Care",
     tagline: "Relief · Essentials · Companionship",
     color: "saffron",
-    image:
-      "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=600&q=80",
+    image: "/images/welfare3.jpeg",
     shortDesc:
       "Regular distribution of essential items to old age homes and orphanages, ensuring nobody is forgotten.",
     points: [
@@ -86,8 +83,7 @@ const programs = [
     title: "Health & Awareness",
     tagline: "Prevention · Education · Wellness",
     color: "teal",
-    image:
-      "https://images.unsplash.com/photo-1584515933487-779824d29309?w=600&q=80",
+    image: "/images/children4.jpeg",
     shortDesc:
       "Running awareness camps that teach prevention over cure — empowering communities with knowledge.",
     points: [
@@ -103,8 +99,7 @@ const programs = [
     title: "Workers & Labour Day",
     tagline: "Respect · Recognition · Relief",
     color: "gold",
-    image:
-      "https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=600&q=80",
+    image: "/images/environmentDay.jpeg",
     shortDesc:
       "Honoring the backbone of society — distributing essentials and celebrating the dignity of labor.",
     points: [
@@ -196,16 +191,21 @@ export default function Programs() {
                 className={`group rounded-2xl border-2 ${c.border} ${c.hover} bg-white overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1`}
                 onClick={() => setActive(isActive ? null : prog.id)}
               >
-                {/* Decorative top */}
-                <div className={`relative h-32 ${c.topBg} flex flex-col items-center justify-center overflow-hidden`}>
-                  <div className={`absolute -top-6 -right-6 w-28 h-28 rounded-full ${c.circle1} opacity-20`} />
-                  <div className={`absolute -bottom-8 -left-8 w-36 h-36 rounded-full ${c.circle2} opacity-15`} />
-                  <div className={`relative w-14 h-14 rounded-2xl ${c.icon} flex items-center justify-center shadow-lg mb-2.5`}>
-                    <Icon size={26} className="text-white" />
+                {/* Image top */}
+                <div className="relative h-40 overflow-hidden">
+                  <Image
+                    src={prog.image}
+                    alt={prog.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
+                  <div className="absolute inset-0 bg-black/35" />
+                  <div className="absolute inset-0 flex flex-col items-end justify-end p-3">
+                    <span className="text-xs font-semibold px-3 py-0.5 rounded-full bg-white/20 backdrop-blur-sm text-white border border-white/30">
+                      {prog.tagline}
+                    </span>
                   </div>
-                  <span className={`text-xs font-semibold px-3 py-0.5 rounded-full ${c.badge}`}>
-                    {prog.tagline}
-                  </span>
                 </div>
 
                 {/* Content */}

@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 const stats = [
   {
-    value: 5000,
+    value: 1000,
     suffix: "+",
     label: "Lives Touched",
     description: "Beneficiaries across our programs",
@@ -12,7 +12,7 @@ const stats = [
     rotate: "rotate-12",
   },
   {
-    value: 200,
+    value: 30,
     suffix: "+",
     label: "Events Organized",
     description: "From health camps to Diwali celebrations",
@@ -28,15 +28,15 @@ const stats = [
     rotate: "rotate-6",
   },
   {
-    value: 6,
-    suffix: "+",
+    value: 2,
+    suffix: "",
     label: "Years of Service",
     description: "Consistent community-driven work",
     color: "saffron",
     rotate: "-rotate-12",
   },
   {
-    value: 300,
+    value: 100,
     suffix: "+",
     label: "Women Honored",
     description: "On Mother's Day & special occasions",
@@ -44,7 +44,7 @@ const stats = [
     rotate: "rotate-3",
   },
   {
-    value: 1000,
+    value: 200,
     suffix: "+",
     label: "Children Nourished",
     description: "Fighting malnutrition every day",

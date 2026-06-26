@@ -44,7 +44,7 @@ export default function About() {
               {/* Main large image */}
               <div className="col-span-2 relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=700&q=80"
+                  src="/images/children3.jpeg"
                   alt="Nav Chetna community work"
                   fill
                   className="object-cover"
@@ -61,8 +61,8 @@ export default function About() {
               {/* Two smaller images */}
               <div className="relative h-40 rounded-xl overflow-hidden shadow-lg">
                 <Image
-                  src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&q=80"
-                  alt="Children"
+                  src="/images/welfare3.jpeg"
+                  alt="Community welfare"
                   fill
                   className="object-cover"
                   sizes="25vw"
@@ -70,8 +70,8 @@ export default function About() {
               </div>
               <div className="relative h-40 rounded-xl overflow-hidden shadow-lg">
                 <Image
-                  src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=400&q=80"
-                  alt="Health camp"
+                  src="/images/welfare5.jpeg"
+                  alt="Community welfare"
                   fill
                   className="object-cover"
                   sizes="25vw"

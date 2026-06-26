@@ -147,11 +147,11 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-b from-warm-50 to-transparent z-10 h-16" />
         <div className="flex gap-2 px-4 h-full items-stretch">
           {[
-            { src: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&q=80", alt: "Children education", label: "Child Education" },
-            { src: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=400&q=80", alt: "Women empowerment", label: "Women Empowerment" },
-            { src: "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=400&q=80", alt: "Health camp", label: "Health Camps" },
-            { src: "https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=400&q=80", alt: "Community work", label: "Community Support" },
-            { src: "https://images.unsplash.com/photo-1547347298-4074fc3086f0?w=400&q=80", alt: "Food distribution", label: "Nutrition Drive" },
+            { src: "/images/children1.jpeg", alt: "Children welfare", label: "Child Welfare" },
+            { src: "/images/mothersDay.jpeg", alt: "Mothers Day celebration", label: "Mother's Day" },
+            { src: "/images/plantingCeremony.jpeg", alt: "Planting ceremony", label: "Planting Ceremony" },
+            { src: "/images/welfare4.jpeg", alt: "Community welfare", label: "Welfare Drive" },
+            { src: "/images/welfare1.jpeg", alt: "Community welfare", label: "Community Support" },
           ].map(({ src, alt, label }, i) => (
             <div key={i} className="relative flex-1 rounded-xl overflow-hidden group min-w-[120px]">
               <Image

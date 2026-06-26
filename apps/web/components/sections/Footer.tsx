@@ -14,7 +14,7 @@ const programs = [
 ];
 
 const socials = [
-  { icon: Facebook, href: "https://www.facebook.com/share/1JcsX1hCJE/", label: "Facebook" },
+  { icon: Facebook, href: "https://www.facebook.com/share/18zfcCar39/", label: "Facebook" },
   { icon: Instagram, href: "https://www.instagram.com/nav_chetna_sangh_trust?igsh=em9ycWliazg3enh1", label: "Instagram" },
   { icon: Youtube, href: "https://youtube.com/@navchetnasanghcharitabletrust?si=okfc_YzyUQ3THN9R", label: "YouTube" },
 ];
