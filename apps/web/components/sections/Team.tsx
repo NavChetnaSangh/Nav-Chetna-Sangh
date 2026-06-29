@@ -17,7 +17,7 @@ const badgeColor = (tier: string) => {
 };
 
 async function getMembers(): Promise<Member[]> {
-  return client.fetch(`*[_type == "teamMember"] | order(_createdAt asc)`);
+  return client.fetch(`*[_type == "teamMember"] | order(_createdAt asc)`, {}, { cache: "no-store" });
 }
 
 function MemberCard({ member, photoSize = "w-20 h-20", compact = false }: { member: Member; photoSize?: string; compact?: boolean }) {
