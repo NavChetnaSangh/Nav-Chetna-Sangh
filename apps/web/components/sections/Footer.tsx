@@ -148,9 +148,14 @@ export default function Footer() {
           <p className="text-white/40 text-xs text-center sm:text-left">
             © {new Date().getFullYear()} Nav Chetna Sangh Charitable Trust. All rights reserved.
           </p>
-          <p className="text-white/40 text-xs flex items-center gap-1">
-            Made with <Heart size={11} className="text-saffron-500 fill-saffron-500" /> for a better society
-          </p>
+          <a
+            href="https://www.linkedin.com/in/deepalikumari--/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white/40 hover:text-white/70 text-xs flex items-center gap-1 transition-colors"
+          >
+            Made with <Heart size={11} className="text-saffron-500 fill-saffron-500" /> by Deepali Kumari
+          </a>
         </div>
       </div>
 
