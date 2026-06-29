@@ -6,14 +6,13 @@ type Member = {
   _id: string;
   name: string;
   role: string;
+  tier: string;
   photo: any;
 };
 
-const badgeColor = (role: string) => {
-  if (role === "Founder & President") return "bg-saffron-100 text-saffron-700";
-  if (role === "Vice President") return "bg-saffron-100 text-saffron-700";
-  if (role === "Secretary") return "bg-gold-100 text-gold-700";
-  if (role === "Treasurer") return "bg-teal-100 text-teal-700";
+const badgeColor = (tier: string) => {
+  if (tier === "founder") return "bg-saffron-100 text-saffron-700";
+  if (tier === "leadership") return "bg-teal-100 text-teal-700";
   return "bg-gray-100 text-gray-500";
 };
 
@@ -42,7 +41,7 @@ function MemberCard({ member, photoSize = "w-20 h-20", compact = false }: { memb
           />
         )}
       </div>
-      <span className={`${compact ? "hidden sm:inline-block" : "inline-block"} text-[10px] font-semibold px-2 py-0.5 rounded-full mb-1 ${badgeColor(member.role)}`}>
+      <span className={`${compact ? "hidden sm:inline-block" : "inline-block"} text-[10px] font-semibold px-2 py-0.5 rounded-full mb-1 ${badgeColor(member.tier)}`}>
         {member.role}
       </span>
       <h4 className={`font-display font-bold text-gray-900 leading-tight ${compact ? "text-[10px] sm:text-xs" : "text-xs"}`}>{member.name}</h4>
@@ -53,9 +52,9 @@ function MemberCard({ member, photoSize = "w-20 h-20", compact = false }: { memb
 export default async function Team() {
   const members = await getMembers();
 
-  const founder = members.find((m) => m.role === "Founder & President");
-  const leadership = members.filter((m) => ["Vice President", "Secretary", "Treasurer"].includes(m.role));
-  const executives = members.filter((m) => m.role === "Executive Member");
+  const founder = members.find((m) => m.tier === "founder");
+  const leadership = members.filter((m) => m.tier === "leadership");
+  const executives = members.filter((m) => m.tier === "executive");
 
   return (
     <section id="team" className="min-h-screen flex flex-col justify-center py-8 bg-warm-50 relative overflow-hidden">
@@ -97,7 +96,7 @@ export default async function Team() {
               </div>
               <div className="z-10">
                 <span className="inline-block bg-saffron-100 text-saffron-700 text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full mb-1">
-                  Founder & President
+                  {founder.role}
                 </span>
                 <h3 className="font-display text-lg font-bold text-gray-900 leading-tight">
                   {founder.name}
