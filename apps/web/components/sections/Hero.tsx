@@ -148,7 +148,7 @@ export default function Hero() {
         <div className="flex gap-2 px-4 h-full items-stretch">
           {[
             { src: "/images/children1.jpeg", alt: "Children welfare", label: "Child Welfare" },
-            { src: "/images/mothersDay.jpeg", alt: "Mothers Day celebration", label: "Mother's Day" },
+            { src: "/images/og-image.jpeg", alt: "Mothers Day celebration", label: "Mother's Day" },
             { src: "/images/plantingCeremony.jpeg", alt: "Planting ceremony", label: "Planting Ceremony" },
             { src: "/images/welfare4.jpeg", alt: "Community welfare", label: "Welfare Drive" },
             { src: "/images/welfare1.jpeg", alt: "Community welfare", label: "Community Support" },
